@@ -12,7 +12,7 @@ function PagUsuario() {
     <GeneralProvider>
       <Container fluid className="align-items-center m-0 p-0">
         <Row className="width-100vw">
-          <Header />
+         <Header />
         </Row>
 
         <Row className="width-100vw">

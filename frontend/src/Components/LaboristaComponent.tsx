@@ -105,78 +105,59 @@ export default function UserProfile() {
   return (
     <div className="profile-container">
       <div className="profile-wrapper">
-        {/* Encabezado */}
-        <header className="profile-header">
-          <div className="profile-avatar">
-            <UserIcon />
-          </div>
-          <h1 className="profile-title">Mi Perfil</h1><p>{usuario ? usuario.tipo : "cargando..."}</p>
-          <div className="profile-divider"></div>
-        </header>
+        <div className="profile-grid">
 
-        {/* Contenido Principal */}
-        <div className="profile-content">
-          {/* Tarjeta de Bienvenida */}
-          <Card className="welcome-card">
-            <CardHeader className="welcome-header">
-              <div className="welcome-info">
-                <div className="welcome-avatar">
-                  <UserIcon />
-                </div>
-                <div className="welcome-text">
-                  <h2 className="welcome-title">
-                    ¡Bienvenido, {usuario ? usuario.nombre : "cargando..."}!
-                  </h2>
-                  <p className="welcome-subtitle">Nos alegra verte de nuevo</p>
-                </div>
+          {/* Panel lateral con foto y estado */}
+          <aside style={{ background: "#212529" }} className="profile-sidebar">
+            <div className="profile-info">
+              <div className="profile-avatar-large">
+                <UserIcon />
               </div>
-            </CardHeader>
-            <CardContent className="welcome-content">
-              <p className="welcome-description">
-                Desde aquí puedes gestionar y modificar las reservas
-              </p>
-              <Button
-                onClick={() => navigate("/laborista/gestionMateriales")}
-                className="reservation-btn"
-              >
-                <span>Gestiona las reservas</span>
-                <ArrowRightIcon />
-              </Button>
-            </CardContent>
-          </Card>
+              <h1>{usuario ? usuario.nombre : "Cargando..."}</h1>
+              <p className="profile-role">{usuario ? usuario.tipo : ""}</p>
+              <div className="status-pill active">🟢 Activo</div>
+            </div>
+          </aside>
 
-          {/* Información Adicional */}
-          <div className="info-grid">
-            {/* Fecha Actual */}
-            <Card className="info-card">
-              <CardContent className="info-content">
-                <div className="info-item">
-                  <div className="info-icon date-icon">
-                    <CalendarIcon />
-                  </div>
-                  <div className="info-text">
-                    <h3 className="info-title">Fecha Actual</h3>
-                    <p className="info-value">{currentDate}</p>
-                  </div>
-                </div>
+          {/* Contenido principal */}
+          <main className="profile-main">
+            {/* Tarjeta de bienvenida */}
+            <Card className="welcome-card">
+              <CardHeader>
+                <h2 style={{ color: "#fff" }}>Bienvenido, {usuario ? usuario.nombre : "Cargando..."} </h2>
+                <p style={{ color: "#fff" }}>Nos alegra verte de nuevo</p>
+              </CardHeader>
+              <CardContent>
+                <p style={{ color: "#fff" }}>
+                  Desde aquí puedes gestionar y modificar las reservas
+                </p>
+                <Button
+                  onClick={() => navigate("/laborista/gestionMateriales")}
+                  className="reservation-btn"
+                >
+                  <span>Gestiona las reservas</span>
+                  <ArrowRightIcon />
+                </Button>
               </CardContent>
             </Card>
 
-            {/* Estado de la Cuenta */}
-            <Card className="info-card">
-              <CardContent className="info-content">
-                <div className="info-item">
-                  <div className="info-icon status-icon">
-                    <div className="status-dot"></div>
+            {/* Sección de información */}
+            <div className="info-grid">
+              <Card className="info-card">
+                <CardContent>
+                  <div className="info-item">
+                    <div className="info-icon date-icon">
+                      <CalendarIcon />
+                    </div>
+                    <div>
+                      <h3 style={{ color: "#fff" }}>Fecha Actual</h3>
+                      <p style={{ color: "#fff" }}>{currentDate}</p>
+                    </div>
                   </div>
-                  <div className="info-text">
-                    <h3 className="info-title">Estado</h3>
-                    <p className="info-value status-active">Cuenta Activa</p>
-                  </div>
-                </div>
-              </CardContent>
-            </Card>
-          </div>
+                </CardContent>
+              </Card>
+            </div>
+          </main>
         </div>
       </div>
     </div>
