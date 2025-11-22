@@ -1,8 +1,9 @@
-import { useState, useEffect } from "react";
-import "../Styles/ClienteProfile.css";
+import { useState, useEffect } from 'react';
+import '../Styles/ClienteProfile.css';
 import SidebarMenu from './SidebarMenu';
-import { Navigate, useNavigate } from "react-router-dom";
+import { Navigate, useNavigate } from 'react-router-dom';
 
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
 // Componentes de iconos SVG simples
 const UserIcon = () => (
   <svg className="icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -27,78 +28,66 @@ const CalendarIcon = () => (
 );
 
 const ArrowRightIcon = () => (
-  <svg
-    className="icon-small"
-    fill="none"
-    stroke="currentColor"
-    viewBox="0 0 24 24"
-  >
-    <path
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      strokeWidth={2}
-      d="M9 5l7 7-7 7"
-    />
+  <svg className="icon-small" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
   </svg>
 );
 
 // Componente Button personalizado
-const Button = ({ children, onClick, className = "" }) => (
+const Button = ({ children, onClick, className = '' }) => (
   <button onClick={onClick} className={`btn ${className}`}>
     {children}
   </button>
 );
 
 // Componentes Card personalizados
-const Card = ({ children, className = "" }) => (
+const Card = ({ children, className = '' }) => (
   <div className={`card ${className}`}>{children}</div>
 );
 
-const CardHeader = ({ children, className = "" }) => (
+const CardHeader = ({ children, className = '' }) => (
   <div className={`card-header ${className}`}>{children}</div>
 );
 
-const CardContent = ({ children, className = "" }) => (
+const CardContent = ({ children, className = '' }) => (
   <div className={`card-content ${className}`}>{children}</div>
 );
 
 export default function UserProfile() {
   const navigate = useNavigate();
-  const [currentDate, setCurrentDate] = useState("");
-  const email = localStorage.getItem("email");
+  const [currentDate, setCurrentDate] = useState('');
+  const email = localStorage.getItem('email');
   const [usuario, setUsuario] = useState<any>(null);
   useEffect(() => {
     if (email) {
       obtenerUsuario(email);
-    } 
+    }
 
     const today = new Date();
     const options: Intl.DateTimeFormatOptions = {
-      weekday: "long",
-      year: "numeric",
-      month: "long",
-      day: "numeric",
+      weekday: 'long',
+      year: 'numeric',
+      month: 'long',
+      day: 'numeric',
     };
-    setCurrentDate(today.toLocaleDateString("es-ES", options));
+    setCurrentDate(today.toLocaleDateString('es-ES', options));
   }, []);
 
   const handleReservationClick = () => {
-    console.log("Navegando al sistema de reservas...");
-    alert("Redirigiendo al sistema de reservas...");
+    console.log('Navegando al sistema de reservas...');
+    alert('Redirigiendo al sistema de reservas...');
   };
 
   //Datos del usuario
 
   const obtenerUsuario = async (email) => {
     try {
-      const response = await fetch(
-        `http://localhost:3000/usuario/consultarEmail/${email}`
-      );
-      if (!response.ok) throw new Error("Error al obtener usuario");
+      const response = await fetch(`${API_BASE_URL}/usuario/consultarEmail/${email}`);
+      if (!response.ok) throw new Error('Error al obtener usuario');
       const json = await response.json();
       setUsuario(json);
     } catch (error) {
-      console.error("Error al obtener usuario:", error);
+      console.error('Error al obtener usuario:', error);
     }
   };
 
@@ -106,15 +95,14 @@ export default function UserProfile() {
     <div className="profile-container">
       <div className="profile-wrapper">
         <div className="profile-grid">
-
           {/* Panel lateral con foto y estado */}
-          <aside style={{ background: "#212529" }} className="profile-sidebar">
+          <aside style={{ background: '#212529' }} className="profile-sidebar">
             <div className="profile-info">
               <div className="profile-avatar-large">
                 <UserIcon />
               </div>
-              <h1>{usuario ? usuario.nombre : "Cargando..."}</h1>
-              <p className="profile-role">{usuario ? usuario.tipo : ""}</p>
+              <h1>{usuario ? usuario.nombre : 'Cargando...'}</h1>
+              <p className="profile-role">{usuario ? usuario.tipo : ''}</p>
               <div className="status-pill active">🟢 Activo</div>
             </div>
           </aside>
@@ -124,18 +112,16 @@ export default function UserProfile() {
             {/* Tarjeta de bienvenida */}
             <Card className="welcome-card">
               <CardHeader>
-                <h2 style={{ color: "#fff" }}>Bienvenido, {usuario ? usuario.nombre : "Cargando..."} </h2>
-                <p style={{ color: "#fff" }}>Nos alegra verte de nuevo</p>
+                <h2 style={{ color: '#fff' }}>
+                  Bienvenido, {usuario ? usuario.nombre : 'Cargando...'}{' '}
+                </h2>
+                <p style={{ color: '#fff' }}>Nos alegra verte de nuevo</p>
               </CardHeader>
               <CardContent>
-                <p style={{ color: "#fff" }}>
-                  Desde aquí puedes gestionar tus reservas y acceder a todos
-                  nuestros servicios.
+                <p style={{ color: '#fff' }}>
+                  Desde aquí puedes gestionar tus reservas y acceder a todos nuestros servicios.
                 </p>
-                <Button
-                  onClick={() => navigate("/pagUsuario/reserva")}
-                  className="reservation-btn"
-                >
+                <Button onClick={() => navigate('/pagUsuario/reserva')} className="reservation-btn">
                   <span>¿Quieres reservar?</span>
                   <ArrowRightIcon />
                 </Button>
@@ -151,8 +137,8 @@ export default function UserProfile() {
                       <CalendarIcon />
                     </div>
                     <div>
-                      <h3 style={{ color: "#fff" }}>Fecha Actual</h3>
-                      <p style={{ color: "#fff" }}>{currentDate}</p>
+                      <h3 style={{ color: '#fff' }}>Fecha Actual</h3>
+                      <p style={{ color: '#fff' }}>{currentDate}</p>
                     </div>
                   </div>
                 </CardContent>

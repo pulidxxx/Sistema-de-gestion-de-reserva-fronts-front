@@ -8,12 +8,13 @@ import Header from "../Classes/Header/Header";
 import ContenedorCartas from "../Components/ContenedorCartas";
 import "../Styles/Gestion.css";
 
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
 function GestionMateriales() {
   const [materiales, setMateriales] = useState([]);
 
   const obtenerMateriales = async () => {
     try {
-      const response = await fetch("http://localhost:3000/reservas-material");
+      const response = await fetch(`${API_BASE_URL}/reservas-material`);
       if (!response.ok)
         throw new Error("Error al obtener materiales reservados");
       const data = await response.json();
@@ -206,7 +207,7 @@ function GestionMateriales() {
                   onClick={async () => {
                     try {
                       const response = await fetch(
-                        `http://localhost:3000/reservas-material/estado/${reservaSeleccionada.id}`,
+                        `${API_BASE_URL}/reservas-material/estado/${reservaSeleccionada.id}`,
                         {
                           method: "PATCH",
                           headers: {
@@ -256,7 +257,7 @@ function GestionMateriales() {
                   onClick={async () => {
                     try {
                       const res = await fetch(
-                        `http://localhost:3000/reservas-material/observaciones/${reservaSeleccionada.id}`,
+                        `${API_BASE_URL}/reservas-material/observaciones/${reservaSeleccionada.id}`,
                         {
                           method: "PATCH",
                           headers: { "Content-Type": "application/json" },

@@ -11,7 +11,7 @@ import { ConversionEmail } from "../Classes/Adapter/conversionEmail";
 import { FachadaDeEstados } from "../Classes/Estados/Fachada/FachadaDeEstados";
 import { useGeneral } from "../Utils/GeneralContext";
 
-
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
 function Login() {
   const navigate = useNavigate();
 
@@ -50,7 +50,7 @@ function Login() {
         setShowAlert(fachada.cambioMostrarAlerta());
       } else {
         cliente.email = emailAdapter.convertirEmailAMinuscula(cliente.email);
-        const res = await fetch("http://localhost:3000/usuario/Login", {
+        const res = await fetch(`${API_BASE_URL}/usuario/Login`, {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify(cliente),

@@ -11,7 +11,7 @@ import "../Styles/ReservaMaterial.css";
 import Select from "react-select";
 
 
-
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
 function ReservaMaterial() {
   const [materiales, setMateriales] = useState([]);
   const [materialSeleccionado, setMaterialSeleccionado] = useState("");
@@ -21,7 +21,7 @@ function ReservaMaterial() {
   useEffect(() => {
     // Cargar materiales desde la API
     axios
-      .get("http://localhost:3000/materiales") // Asegúrate de tener este endpoint
+      .get(`${API_BASE_URL}/materiales` ) // Asegúrate de tener este endpoint
       .then((res) => setMateriales(res.data))
       .catch((err) => console.error("Error cargando materiales:", err));
   }, []);
@@ -33,7 +33,7 @@ function ReservaMaterial() {
     }
 
     try {
-      const response = await fetch("http://localhost:3000/reservas-material", {
+      const response = await fetch(`${API_BASE_URL}/reservas-material`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({

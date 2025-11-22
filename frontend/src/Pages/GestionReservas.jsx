@@ -8,13 +8,13 @@ import Header from "../Classes/Header/Header";
 import ContenedorCartas from "../Components/ContenedorCartas";
 import "../Styles/Gestion.css";
 
-
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
 function GestionReserva() {
   const [reservas, setReserva] = useState([]);
 
   const obtenerReservas = async () => {
     try {
-      const response = await fetch("http://localhost:3000/reservas");
+      const response = await fetch(`${API_BASE_URL}/reservas`);
       if (!response.ok)
         throw new Error("Error al obtener espacios reservados");
       const data = await response.json();
