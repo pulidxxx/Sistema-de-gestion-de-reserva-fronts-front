@@ -96,7 +96,7 @@ export default function UserProfile() {
       <div className="profile-wrapper">
         <div className="profile-grid">
           {/* Panel lateral con foto y estado */}
-          <aside style={{ background: '#212529' }} className="profile-sidebar">
+          <aside className="profile-sidebar">
             <div className="profile-info">
               <div className="profile-avatar-large">
                 <UserIcon />
@@ -105,20 +105,51 @@ export default function UserProfile() {
               <p className="profile-role">{usuario ? usuario.tipo : ''}</p>
               <div className="status-pill active">🟢 Activo</div>
             </div>
+
+            <div className="profile-divider-line"></div>
+
+            <div className="profile-stats">
+              <div className="stat-item">
+                <div className="stat-icon">
+                  <CalendarIcon />
+                </div>
+                <div className="stat-content">
+                  <p className="stat-label">Fecha de Registro</p>
+                  <p className="stat-value">Miembro desde 2024</p>
+                </div>
+              </div>
+
+              <div className="stat-item">
+                <div className="stat-icon user-icon">
+                  <UserIcon />
+                </div>
+                <div className="stat-content">
+                  <p className="stat-label">Email</p>
+                  <p className="stat-value">{usuario ? usuario.email : 'N/A'}</p>
+                </div>
+              </div>
+            </div>
           </aside>
 
           {/* Contenido principal */}
           <main className="profile-main">
             {/* Tarjeta de bienvenida */}
             <Card className="welcome-card">
-              <CardHeader>
-                <h2 style={{ color: '#fff' }}>
-                  Bienvenido, {usuario ? usuario.nombre : 'Cargando...'}{' '}
-                </h2>
-                <p style={{ color: '#fff' }}>Nos alegra verte de nuevo</p>
+              <CardHeader className="welcome-header">
+                <div className="welcome-info">
+                  <div className="welcome-avatar">
+                    <UserIcon />
+                  </div>
+                  <div>
+                    <h2 className="welcome-title">
+                      Bienvenido, {usuario ? usuario.nombre : 'Cargando...'}{' '}
+                    </h2>
+                    <p className="welcome-subtitle">Nos alegra verte de nuevo</p>
+                  </div>
+                </div>
               </CardHeader>
-              <CardContent>
-                <p style={{ color: '#fff' }}>
+              <CardContent className="welcome-content">
+                <p className="welcome-description">
                   Desde aquí puedes gestionar tus reservas y acceder a todos nuestros servicios.
                 </p>
                 <Button onClick={() => navigate('/pagUsuario/reserva')} className="reservation-btn">
@@ -131,14 +162,14 @@ export default function UserProfile() {
             {/* Sección de información */}
             <div className="info-grid">
               <Card className="info-card">
-                <CardContent>
+                <CardContent className="info-content">
                   <div className="info-item">
                     <div className="info-icon date-icon">
                       <CalendarIcon />
                     </div>
                     <div>
-                      <h3 style={{ color: '#fff' }}>Fecha Actual</h3>
-                      <p style={{ color: '#fff' }}>{currentDate}</p>
+                      <h3 className="info-title">Fecha Actual</h3>
+                      <p className="info-value">{currentDate}</p>
                     </div>
                   </div>
                 </CardContent>

@@ -1,7 +1,7 @@
-import React, { useState } from "react";
-import { Link, useNavigate, useLocation } from "react-router-dom";
-import "../../../Styles/SidebarMenu.css";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import React, { useState } from 'react';
+import { Link, NavLink, useNavigate, useLocation } from 'react-router-dom';
+import '../../../Styles/SidebarMenu.css';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
   faShop,
   faUser,
@@ -9,18 +9,18 @@ import {
   faSignOut,
   faStar,
   faArrowPointer,
-} from "@fortawesome/free-solid-svg-icons";
+} from '@fortawesome/free-solid-svg-icons';
 
 const LaboristaHeaderStrategy: React.FC = () => {
   const navigate = useNavigate();
   const location = useLocation();
   const [isOpen, setIsOpen] = useState(false);
 
-  const toggleMenu = () => setIsOpen(prev => !prev);
+  const toggleMenu = () => setIsOpen((prev) => !prev);
 
   const handleLogout = () => {
     localStorage.clear();
-    navigate("/");
+    navigate('/');
     window.location.reload();
   };
 
@@ -32,25 +32,37 @@ const LaboristaHeaderStrategy: React.FC = () => {
         <div className="line"></div>
       </div>
 
-      <div className={`sidebar ${isOpen ? "open" : ""}`}>
-        
+      <div className={`sidebar ${isOpen ? 'open' : ''}`}>
         <ul>
           <li>
-            <Link to="/laborista" onClick={toggleMenu}>
-              <FontAwesomeIcon icon={faUser} /> {localStorage.getItem("username")}
-            </Link>
+            <NavLink
+              to="/laborista"
+              end
+              onClick={toggleMenu}
+              className={({ isActive }) => (isActive ? 'active-link' : '')}
+            >
+              <FontAwesomeIcon icon={faUser} /> {localStorage.getItem('username')}
+            </NavLink>
           </li>
 
           <li>
-            <Link to="/laborista/gestionMateriales" onClick={toggleMenu}>
+            <NavLink
+              to="/laborista/gestionMateriales"
+              onClick={toggleMenu}
+              className={({ isActive }) => (isActive ? 'active-link' : '')}
+            >
               <FontAwesomeIcon icon={faStar} /> Gestión de materiales
-            </Link>
+            </NavLink>
           </li>
 
           <li>
-            <Link to="/laborista/gestionReservas">
+            <NavLink
+              to="/laborista/gestionReservas"
+              onClick={toggleMenu}
+              className={({ isActive }) => (isActive ? 'active-link' : '')}
+            >
               <FontAwesomeIcon icon={faCartShopping} /> Gestión de reservas
-            </Link>
+            </NavLink>
           </li>
 
           <li onClick={handleLogout}>
@@ -59,13 +71,11 @@ const LaboristaHeaderStrategy: React.FC = () => {
             </Link>
           </li>
         </ul>
-
       </div>
 
       {isOpen && <div className="overlay" onClick={toggleMenu}></div>}
     </>
   );
 };
-  
-  
+
 export default LaboristaHeaderStrategy;

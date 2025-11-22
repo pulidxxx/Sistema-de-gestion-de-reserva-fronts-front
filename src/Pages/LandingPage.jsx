@@ -30,7 +30,7 @@ const LandingPage = () => {
       <nav className="landing-navbar">
         <div className="navbar-container">
           <div className="navbar-brand">
-            <h2>🏢 Sistema de Reservas</h2>
+            <h2>Sistema de Reservas</h2>
           </div>
           <div className="navbar-actions">
             <button 
@@ -253,35 +253,6 @@ const LandingPage = () => {
           </button>
         </div>
       </section>
-
-
-      <footer className="landing-footer">
-        <div className="footer-gradient-bg">
-          <div className="footer-content">
-            <div className="footer-section">
-              <h4>🏢 Sistema de Reservas</h4>
-              <p>Gestión inteligente de espacios y materiales para instituciones educativas.</p>
-            </div>
-            
-            <div className="footer-section">
-              <h4>Enlaces Rápidos</h4>
-              <ul>
-                <li><a href="#" onClick={(e) => { e.preventDefault(); navigate('/login'); }}>Iniciar Sesión</a></li>
-                <li><a href="#" onClick={(e) => { e.preventDefault(); navigate('/registro'); }}>Registrarse</a></li>
-              </ul>
-            </div>
-            
-            <div className="footer-section">
-              <h4>Contacto</h4>
-              <p>Para soporte técnico o consultas, contacta con el administrador del sistema.</p>
-            </div>
-          </div>
-          
-          <div className="footer-bottom">
-            <p>&copy; 2025 Sistema de Gestión de Reservas. Todos los derechos reservados.</p>
-          </div>
-        </div>
-      </footer>
     </div>
   );
 };

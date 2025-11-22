@@ -1,297 +1,295 @@
 .profile-container {
-min-height: 100vh;
-background: #ffffff;
-background-attachment: fixed;
-padding: 0.5rem;
-margin-bottom: 1.5rem;
+  min-height: 100vh;
+  background: transparent;
+  background-attachment: fixed;
+  padding: 0.5rem;
+  margin-bottom: 1.5rem;
 }
 
 .profile-wrapper {
-max-width: 64rem;
-margin: 0 auto;
+  max-width: 64rem;
+  margin: 0 auto;
 }
 
 .profile-header {
-text-align: center;
-margin-bottom: 2rem;
-padding-top: 2rem;
+  text-align: center;
+  margin-bottom: 2rem;
+  padding-top: 2rem;
 }
 
 .profile-avatar {
-display: inline-flex;
-align-items: center;
-justify-content: center;
-width: 5rem;
-height: 5rem;
-border-radius: 50%;
-box-shadow: 0 10px 15px rgba(255, 255, 255, 0.414);
-margin-bottom: 1rem;
-color: white;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 5rem;
+  height: 5rem;
+  border-radius: 50%;
+  box-shadow: 0 10px 15px rgba(0, 0, 0, 0.2);
+  margin-bottom: 1rem;
+  background: rgba(255, 255, 255, 0.15);
+  color: white;
+  border: 2px solid rgba(255, 255, 255, 0.3);
 }
 
 .profile-title {
-font-size: 2.5rem;
-font-weight: bold;
-color: #f8fafc;
-margin: 0 0 0.5rem 0;
-text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+  font-size: 2.5rem;
+  font-weight: bold;
+  color: #ffffff;
+  margin: 0 0 0.5rem 0;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
 }
 
 .profile-divider {
-width: 6rem;
-height: 0.25rem;
-background: white;
-margin: 0 auto;
-border-radius: 2px;
-box-shadow: 0 2px 8px rgba(226, 225, 245, 0.3);
+  width: 6rem;
+  height: 0.25rem;
+  background: white;
+  margin: 0 auto;
+  border-radius: 2px;
+  box-shadow: 0 2px 8px rgba(255, 255, 255, 0.3);
 }
 
 .profile-content {
-display: grid;
-gap: 2rem;
+  display: grid;
+  gap: 2rem;
 }
 
 .card {
-background: #212529;
-backdrop-filter: blur(10px);
-border: 1px solid rgba(239, 243, 250, 0.3);
-border-radius: 1rem;
-box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
-overflow: hidden;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 1rem;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+  overflow: hidden;
 }
 
 .card-header {
-padding: 1.5rem;
+  padding: 1.5rem;
 }
 
 .card-content {
-padding: 1.5rem;
+  padding: 1.5rem;
 }
 
-/* Tarjeta de bienvenida */
 .welcome-card {
-border-radius: 1.5rem;
-box-shadow: 0 25px 50px rgba(0, 0, 0, 0.4);
-border: 1px solid rgba(103, 102, 123, 0.2);
+  border-radius: 1.5rem;
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  background: rgba(255, 255, 255, 0.95);
 }
 
 .welcome-header {
-background: #212529;
-color: white;
-position: relative;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  position: relative;
 }
 
 .welcome-header::before {
-content: "";
-position: absolute;
-top: 0;
-left: 0;
-right: 0;
-bottom: 0;
-background: #212529;
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: transparent;
 }
 
 .welcome-info {
-display: flex;
-align-items: center;
-gap: 1rem;
-position: relative;
-z-index: 1;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  position: relative;
+  z-index: 1;
 }
 
 .welcome-avatar {
-width: 4rem;
-height: 4rem;
-background: rgba(255, 255, 255, 0.15);
-border-radius: 50%;
-display: flex;
-align-items: center;
-justify-content: center;
-color: white;
-border: 2px solid rgba(255, 255, 255, 0.2);
+  width: 4rem;
+  height: 4rem;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  border: 2px solid rgba(255, 255, 255, 0.3);
 }
 
 .welcome-title {
-font-size: 2rem;
-font-weight: bold;
-margin: 0;
-text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  font-size: 2rem;
+  font-weight: bold;
+  margin: 0;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 }
 
 .welcome-subtitle {
-color: #e2e8f0;
-margin: 0.25rem 0 0 0;
+  color: rgba(255, 255, 255, 0.9);
+  margin: 0.25rem 0 0 0;
 }
 
 .welcome-content {
-padding: 1.5rem;
-background: #212529;
+  padding: 1.5rem;
+  background: white;
 }
 
 .welcome-description {
-color: #cbd5e1;
-font-size: 1.125rem;
-margin-bottom: 1.5rem;
-line-height: 1.6;
+  color: #475569;
+  font-size: 1.125rem;
+  margin-bottom: 1.5rem;
+  line-height: 1.6;
 }
 
 .btn {
-display: inline-flex;
-align-items: center;
-justify-content: center;
-padding: 0.75rem 1.5rem;
-border-radius: 0.5rem;
-font-weight: 600;
-border: none;
-cursor: pointer;
-transition: all 0.3s ease;
-gap: 0.5rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.75rem 1.5rem;
+  border-radius: 0.5rem;
+  font-weight: 600;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  gap: 0.5rem;
 }
 
 .reservation-btn {
-background: #212529;
-color: white;
-padding: 0.75rem 2rem;
-border-radius: 0.75rem;
-font-size: 1.1rem;
-border: 1px solid rgba(255, 255, 255, 0.382);
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  padding: 0.75rem 2rem;
+  border-radius: 0.75rem;
+  font-size: 1.1rem;
+  border: none;
+  box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
 }
 
 .reservation-btn:hover {
-transform: translateY(-2px);
-box-shadow: 0 5px 10px rgba(231, 231, 248, 0.63);
-background: #3c434a;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(102, 126, 234, 0.5);
+  background: linear-gradient(135deg, #764ba2 0%, #667eea 100%);
 }
 
-/* Grid de información */
 .info-grid {
-display: grid;
-grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-gap: 1.5rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1.5rem;
 }
 
 .info-card {
-border-radius: 1.5rem;
-box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
-background: #212529;
-border: 1px solid rgba(216, 228, 245, 0.521);
+  border-radius: 1.5rem;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+  background: rgba(255, 255, 255, 0.95);
+  border: 1px solid rgba(255, 255, 255, 0.3);
 }
 
 .info-content {
-padding: 1.5rem;
+  padding: 1.5rem;
 }
 
 .info-item {
-display: flex;
-align-items: center;
-gap: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
 }
 
 .info-icon {
-width: 3rem;
-height: 3rem;
-border-radius: 0.75rem;
-display: flex;
-align-items: center;
-justify-content: center;
-color: white;
-box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  width: 3rem;
+  height: 3rem;
+  border-radius: 0.75rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3);
 }
 
 .date-icon {
-background: linear-gradient(135deg, #059669, #0ea5e9);
+  background: linear-gradient(135deg, #059669, #0ea5e9);
 }
 
 .status-icon {
-background: linear-gradient(135deg, #37343c, #404080);
+  background: linear-gradient(135deg, #667eea, #764ba2);
 }
 
 .status-dot {
-width: 0.75rem;
-height: 0.75rem;
-background: #10b981;
-border-radius: 50%;
-box-shadow: 0 0 8px rgba(16, 185, 129, 0.5);
+  width: 0.75rem;
+  height: 0.75rem;
+  background: #10b981;
+  border-radius: 50%;
+  box-shadow: 0 0 8px rgba(16, 185, 129, 0.5);
 }
 
 .info-title {
-font-weight: 600;
-color: #f1f5f9; /* Texto claro */
-margin: 0 0 0.25rem 0;
+  font-weight: 600;
+  color: #1e293b;
+  margin: 0 0 0.25rem 0;
 }
 
 .info-value {
-color: #94a3b8; /* Texto gris claro */
-margin: 0;
-text-transform: capitalize;
+  color: #475569;
+  margin: 0;
+  text-transform: capitalize;
 }
 
 .status-active {
-color: #34d399; /* Verde más brillante para modo oscuro */
-font-weight: 600;
-text-shadow: 0 0 4px rgba(52, 211, 153, 0.3);
+  color: #059669;
+  font-weight: 600;
 }
 
-/* Iconos */
 .icon {
-width: 1.5rem;
-height: 1.5rem;
+  width: 1.5rem;
+  height: 1.5rem;
 }
 
 .icon-small {
-width: 1.25rem;
-height: 1.25rem;
+  width: 1.25rem;
+  height: 1.25rem;
 }
 
-/* Efectos adicionales para modo oscuro */
 .card:hover {
-transform: translateY(-2px);
-box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
-border-color: rgba(237, 236, 255, 0.3);
+  transform: translateY(-2px);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+  border-color: rgba(255, 255, 255, 0.4);
 }
 
-/* Responsive */
 @media (max-width: 768px) {
-.profile-title {
-font-size: 2rem;
+  .profile-title {
+    font-size: 2rem;
+  }
+
+  .welcome-title {
+    font-size: 1.5rem;
+  }
+
+  .welcome-info {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .info-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .reservation-btn {
+    width: 100%;
+  }
 }
 
-.welcome-title {
-font-size: 1.5rem;
-}
-
-.welcome-info {
-flex-direction: column;
-text-align: center;
-}
-
-.info-grid {
-grid-template-columns: 1fr;
-}
-
-.reservation-btn {
-width: 100%;
-}
-}
-
-/* Animaciones suaves */
 @keyframes fadeIn {
-from {
-opacity: 0;
-transform: translateY(20px);
-}
-to {
-opacity: 1;
-transform: translateY(0);
-}
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .card {
-animation: fadeIn 0.6s ease-out;
+  animation: fadeIn 0.6s ease-out;
 }
 
 .profile-avatar {
-animation: fadeIn 0.8s ease-out;
+  animation: fadeIn 0.8s ease-out;
 }
 .profile-grid {
   display: grid;
@@ -301,35 +299,50 @@ animation: fadeIn 0.8s ease-out;
 }
 
 .profile-sidebar {
-  background: rgba(255, 255, 255, 0.05);
+  background: rgba(255, 255, 255, 0.95) !important;
   border-radius: 1rem;
-  padding: 2rem 1.5rem;
+  padding: 0 !important;
   text-align: center;
-  color: white;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+  color: #1e293b;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  backdrop-filter: blur(10px);
+  overflow: hidden;
+}
+
+.profile-info {
+  padding: 2rem 1.5rem !important;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%) !important;
+  color: white !important;
 }
 
 .profile-avatar-large {
   width: 6rem;
   height: 6rem;
   border-radius: 50%;
-  border: 2px solid rgba(255,255,255,0.3);
+  border: 3px solid rgba(255, 255, 255, 0.8);
   display: flex;
   align-items: center;
   justify-content: center;
   margin: 0 auto 1rem;
-  background: #262c31;
+  background: rgba(255, 255, 255, 0.2) !important;
+  color: white !important;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
 }
 
 .profile-sidebar h1 {
   margin: 0;
   font-size: 1.5rem;
   font-weight: 700;
+  color: white !important;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 }
 
 .profile-role {
-  color: #a5b4fc;
+  color: rgba(255, 255, 255, 0.9) !important;
   margin-bottom: 1rem;
+  font-weight: 600;
+  font-size: 1rem;
 }
 
 .status-pill {
@@ -338,10 +351,89 @@ animation: fadeIn 0.8s ease-out;
   border-radius: 2rem;
   font-weight: 600;
   margin-top: 0.5rem;
+  background: rgba(255, 255, 255, 0.2) !important;
+  color: white !important;
+  font-size: 0.9rem;
 }
+
 .status-pill.active {
-  background: rgba(16,185,129,0.15);
-  color: #34d399;
+  background: rgba(16, 185, 129, 0.25) !important;
+  color: #d1fae5 !important;
+}
+
+/* Línea divisoria en el sidebar */
+.profile-divider-line {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, #e2e8f0, transparent);
+  margin: 0;
+}
+
+/* Sección de estadísticas en el sidebar */
+.profile-stats {
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  background: transparent !important;
+}
+
+.stat-item {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem;
+  background: rgba(102, 126, 234, 0.05) !important;
+  border-radius: 0.75rem;
+  border: 1px solid rgba(102, 126, 234, 0.1);
+  transition: all 0.3s ease;
+}
+
+.stat-item:hover {
+  background: rgba(102, 126, 234, 0.1) !important;
+  transform: translateX(4px);
+  box-shadow: 0 2px 8px rgba(102, 126, 234, 0.15);
+}
+
+.stat-icon {
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 0.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%) !important;
+  color: white !important;
+  box-shadow: 0 2px 8px rgba(102, 126, 234, 0.3);
+  flex-shrink: 0;
+}
+
+.stat-icon.user-icon {
+  background: linear-gradient(135deg, #059669, #0ea5e9) !important;
+}
+
+.stat-content {
+  text-align: left;
+  flex: 1;
+  min-width: 0;
+}
+
+.stat-label {
+  font-size: 0.75rem;
+  color: #64748b !important;
+  font-weight: 600;
+  margin: 0 0 0.25rem 0;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.stat-value {
+  font-size: 0.9rem;
+  color: #1e293b !important;
+  font-weight: 600;
+  margin: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .profile-main {
@@ -350,50 +442,89 @@ animation: fadeIn 0.8s ease-out;
   gap: 2rem;
 }
 
-/* Responsive */
 @media (max-width: 900px) {
   .profile-grid {
     grid-template-columns: 1fr;
   }
 }
 
-/* === FIX DEFINITIVO DE COLOR DE TEXTO === */
-
-/* Fuerza el color del texto dentro de las secciones oscuras */
-.profile-container, 
-.profile-dashboard,
-.profile-info,
-.profile-data-grid,
-.profile-actions,
-.profile-info *,
-.profile-data-grid *,
-.profile-actions * {
-  color: #f8fafc !important; /* blanco suave */
-}
-
-/* Títulos destacados más brillantes */
-.profile-welcome,
-.info-title,
-.profile-title {
-  color: #ffffff !important;
-  font-weight: 700;
-}
-
-/* Subtítulos y textos secundarios gris claro */
-.profile-subtitle,
-.info-value,
-.profile-role {
-  color: #d1d5db !important;
-}
-
-/* Verde para textos de estado */
-.status-active {
-  color: #34d399 !important;
-  font-weight: 600;
-}
-
-/* Botones */
 .btn-large-action,
 .reservation-btn {
+  color: #ffffff !important;
+}
+
+.card-header h2,
+.card-header h3,
+.card-header h4,
+.welcome-card h1,
+.welcome-card h2 {
+  color: #ffffff !important;
+}
+
+.card-content,
+.card-content p,
+.card-content span,
+.card-content div {
+  color: #1e293b !important;
+}
+
+.welcome-content,
+.welcome-content p,
+.welcome-content span,
+.welcome-content div {
+  color: #1e293b !important;
+}
+
+.welcome-description {
+  color: #475569 !important;
+}
+
+.info-card h2,
+.info-card h3,
+.info-card h4 {
+  color: #1e293b !important;
+}
+
+.info-title {
+  color: #1e293b !important;
+}
+
+.info-value {
+  color: #475569 !important;
+}
+
+.profile-sidebar,
+.profile-sidebar p,
+.profile-sidebar span,
+.profile-sidebar div:not(.profile-avatar-large) {
+  color: #1e293b !important;
+}
+
+.profile-sidebar h1,
+.profile-sidebar h2,
+.profile-sidebar h3 {
+  color: #1e293b !important;
+}
+
+.profile-role {
+  color: #667eea !important;
+}
+
+.status-pill.active {
+  color: #059669 !important;
+}
+
+.status-active {
+  color: #059669 !important;
+}
+
+.btn,
+.reservation-btn,
+button {
+  color: #ffffff !important;
+}
+
+.profile-avatar-large,
+.welcome-avatar {
   color: #ffffff !important;
 }

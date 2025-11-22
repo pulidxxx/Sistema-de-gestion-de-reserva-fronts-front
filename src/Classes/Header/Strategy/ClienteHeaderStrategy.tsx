@@ -1,7 +1,7 @@
-import React, { useState } from "react";
-import { Link, useNavigate, useLocation } from "react-router-dom";
-import "../../../Styles/SidebarMenu.css";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import React, { useState } from 'react';
+import { Link, NavLink, useNavigate, useLocation } from 'react-router-dom';
+import '../../../Styles/SidebarMenu.css';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
   faShop,
   faUser,
@@ -9,18 +9,18 @@ import {
   faSignOut,
   faStar,
   faArrowPointer,
-} from "@fortawesome/free-solid-svg-icons";
+} from '@fortawesome/free-solid-svg-icons';
 
 const ClienteHeaderStrategy: React.FC = () => {
   const navigate = useNavigate();
   const location = useLocation();
   const [isOpen, setIsOpen] = useState(false);
 
-  const toggleMenu = () => setIsOpen(prev => !prev);
+  const toggleMenu = () => setIsOpen((prev) => !prev);
 
   const handleLogout = () => {
     localStorage.clear();
-    navigate("/");
+    navigate('/');
     window.location.reload();
   };
 
@@ -32,37 +32,56 @@ const ClienteHeaderStrategy: React.FC = () => {
         <div className="line"></div>
       </div>
 
-      <div className={`sidebar ${isOpen ? "open" : ""}`}>
-
+      <div className={`sidebar ${isOpen ? 'open' : ''}`}>
         <ul>
           <li>
-            <Link to="/pagUsuario/usuario" onClick={toggleMenu}>
-              <FontAwesomeIcon icon={faUser} /> {localStorage.getItem("username")}
-            </Link>
+            <NavLink
+              to="/pagUsuario/usuario"
+              onClick={toggleMenu}
+              className={({ isActive }) => (isActive ? 'active-link' : '')}
+            >
+              <FontAwesomeIcon icon={faUser} /> {localStorage.getItem('username')}
+            </NavLink>
           </li>
 
           <li>
-            <Link to="/pagUsuario/reserva" onClick={toggleMenu}>
+            <NavLink
+              to="/pagUsuario/reserva"
+              onClick={toggleMenu}
+              className={({ isActive }) => (isActive ? 'active-link' : '')}
+            >
               <FontAwesomeIcon icon={faShop} /> Reservar Espacio
-            </Link>
+            </NavLink>
           </li>
 
           <li>
-            <Link to="/pagUsuario/reservaMaterial" onClick={toggleMenu}>
+            <NavLink
+              to="/pagUsuario/reservaMaterial"
+              onClick={toggleMenu}
+              className={({ isActive }) => (isActive ? 'active-link' : '')}
+            >
               <FontAwesomeIcon icon={faStar} /> Reservar Material
-            </Link>
+            </NavLink>
           </li>
 
           <li>
-            <Link to="/pagUsuario/externo" onClick={toggleMenu}>
+            <NavLink
+              to="/pagUsuario/externo"
+              onClick={toggleMenu}
+              className={({ isActive }) => (isActive ? 'active-link' : '')}
+            >
               <FontAwesomeIcon icon={faArrowPointer} /> Recursos Externos
-            </Link>
+            </NavLink>
           </li>
 
           <li>
-            <Link to="/pagUsuario/misReservas" onClick={toggleMenu}>
+            <NavLink
+              to="/pagUsuario/misReservas"
+              onClick={toggleMenu}
+              className={({ isActive }) => (isActive ? 'active-link' : '')}
+            >
               <FontAwesomeIcon icon={faCartShopping} /> Mis Reservas
-            </Link>
+            </NavLink>
           </li>
 
           <li onClick={handleLogout}>
@@ -71,7 +90,6 @@ const ClienteHeaderStrategy: React.FC = () => {
             </Link>
           </li>
         </ul>
-
       </div>
 
       {isOpen && <div className="overlay" onClick={toggleMenu}></div>}
