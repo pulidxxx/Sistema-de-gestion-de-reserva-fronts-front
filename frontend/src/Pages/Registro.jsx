@@ -9,6 +9,8 @@ import { ConversionEmail } from "../Classes/Adapter/conversionEmail";
 import Header from "../Classes/Header/Header";
 import { FachadaDeEstados } from "../Classes/Estados/Fachada/FachadaDeEstados";
 
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
+
 function Registro() {
   const fachada = new FachadaDeEstados();
   const emailAdapter = new ConversionEmail();
@@ -75,7 +77,7 @@ function Registro() {
         codigoEstudiantil: tipo === "Estudiante" ? codigoEstudiantil : null,
       };
 
-      const res = await fetch("http://localhost:3000/usuario/crearUsuario", {
+      const res = await fetch(`${API_BASE_URL}/usuario/crearUsuario`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(payload),
