@@ -1,6 +1,5 @@
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
-import ThemeSwitcher from "../Components/ThemeSwitcher";
 import Image from "react-bootstrap/Image";
 import Alert from "react-bootstrap/Alert";
 import { Link } from "react-router-dom";
@@ -72,7 +71,7 @@ function Login() {
             setAlertState(fachada.cambioEstadoDeAlerta(0));
             setShowAlert(fachada.cambioMostrarAlerta());
 
-            login(email); // ✅ usamos el contexto aquí
+            login(email);
             localStorage.setItem("username", nombre);
             localStorage.setItem("tipoUsuario", tipo);
 
@@ -199,10 +198,16 @@ function Login() {
               Crear cuenta
             </Button>
           </Link>
+          <Link to={"/"} className="d-block mt-3">
+            <Button
+              variant="outline-secondary"
+              className="btn-back-home"
+            >
+              ← Volver al inicio
+            </Button>
+          </Link>
         </Form.Group>
       </div>
-      <ThemeSwitcher/>
-      <br/>
     </>
   );
 }

@@ -1,6 +1,5 @@
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
-import ThemeSwitcher from "../Components/ThemeSwitcher";
 import Image from "react-bootstrap/Image";
 import Alert from "react-bootstrap/Alert";
 import { useNavigate, Link } from "react-router-dom";
@@ -92,7 +91,7 @@ function Registro() {
         setAlertText("Registro exitoso");
         setAlertState(fachada.cambioEstadoDeAlerta(0));
         setShowAlert(fachada.cambioMostrarAlerta());
-        setTimeout(() => navigate("/"), 500);
+        setTimeout(() => navigate("/login"), 500);
       }
 
       setLoading(false);
@@ -107,25 +106,27 @@ function Registro() {
   return (
     <>
       <Header />
+      <Alert
+        className="alert mt-5"
+        variant={alertState}
+        show={showAlert}
+        onClose={() => setShowAlert(fachada.cambioMostrarAlerta())}
+        dismissible
+      >
+        {alertText}
+      </Alert>
       <div className="text-center content">
-        <ThemeSwitcher />
-        <Alert
-          className="mt-5"
-          variant={alertState}
-          show={showAlert}
-          onClose={() => setShowAlert(fachada.cambioMostrarAlerta())}
-          dismissible
-        >
-          {alertText}
-        </Alert>
-
-        <Form style={{ width: "40%" }} onSubmit={clientSubmit} data-testid="Form">
-          <Form.Group className="mb-4 mt-4" controlId="formLogo">
-            <Image className="logoCentral" src="/logo.png" fluid width="40%" />
-          </Form.Group>
-
+        <Form.Group className="mb-4 mt-5 pt-5" controlId="formBasicTipo">
+          <Image className="logoCentral" src="/logo.png" fluid width="22%" />
+        </Form.Group>
+        <Form onSubmit={clientSubmit} data-testid="Form">
           <Form.Group className="mb-3" controlId="formTipoUsuario">
-            <Form.Select onChange={handleSelect} value={cliente.tipo} data-testid="Tipo de registro">
+            <Form.Select 
+              style={{ width: "325px" }}
+              onChange={handleSelect} 
+              value={cliente.tipo} 
+              data-testid="Tipo de registro"
+            >
               <option value="">Selecciona tu rol</option>
               <option value="Estudiante">Estudiante</option>
               <option value="Profesor">Profesor</option>
@@ -137,6 +138,7 @@ function Registro() {
 
           <Form.Group className="mb-3" controlId="formNombre">
             <Form.Control
+              style={{ width: "325px" }}
               type="text"
               name="nombre"
               placeholder="Nombre"
@@ -148,6 +150,7 @@ function Registro() {
 
           <Form.Group className="mb-3" controlId="formEmail">
             <Form.Control
+              style={{ width: "325px" }}
               type="email"
               name="email"
               placeholder="Correo electrónico"
@@ -159,6 +162,7 @@ function Registro() {
 
           <Form.Group className="mb-3" controlId="formPassword">
             <Form.Control
+              style={{ width: "325px" }}
               type="password"
               name="password"
               placeholder="Contraseña"
@@ -170,6 +174,7 @@ function Registro() {
 
           <Form.Group className="mb-3" controlId="formCedula">
             <Form.Control
+              style={{ width: "325px" }}
               type="text"
               name="cedula"
               placeholder="Cédula"
@@ -181,6 +186,7 @@ function Registro() {
           {cliente.tipo === "Estudiante" && (
             <Form.Group className="mb-3" controlId="formCodigoEstudiantil">
               <Form.Control
+                style={{ width: "325px" }}
                 type="text"
                 name="codigoEstudiantil"
                 placeholder="Código Estudiantil"
@@ -191,7 +197,6 @@ function Registro() {
           )}
 
           <Button
-            className="mt-3"
             variant="primary"
             type="submit"
             disabled={
@@ -207,15 +212,21 @@ function Registro() {
             {loading ? "Registrando..." : "Registrarme"}
           </Button>
         </Form>
-
         <Form.Group>
           <hr />
-          <Link to={"/"}>
-            <Button variant="outline-primary">Login</Button>
+          <Link to={"/login"}>
+            <Button variant="outline-primary">Ya tengo cuenta - Iniciar Sesión</Button>
+          </Link>
+          <Link to={"/"} className="d-block mt-3">
+            <Button
+              variant="outline-secondary"
+              className="btn-back-home"
+            >
+              ← Volver al inicio
+            </Button>
           </Link>
         </Form.Group>
       </div>
-      <br />
     </>
   );
 }

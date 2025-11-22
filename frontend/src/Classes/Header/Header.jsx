@@ -5,7 +5,7 @@ import { useState, useEffect } from "react";
 // Cabecera
 const Header = () => {
   const [isUserAuthenticated, setIsUserAuthenticated] = useState(false);
-  const [contexto, setContexto] = useState(new HeaderContext());
+  const [contexto] = useState(new HeaderContext());
 
   useEffect(() => {
     const username = localStorage.getItem("username");
@@ -26,7 +26,7 @@ const Header = () => {
   }, []);
 
   return (
-    <Container fluid className="mx-0 px-0">
+    <Container fluid className="mx-0 px-0 login-header">
       {contexto.renderNavbar(isUserAuthenticated)}
     </Container>
   );
