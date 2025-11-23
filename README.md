@@ -1,54 +1,126 @@
-# **¿Que es este proyecto?**
+# Sistema de Gestión de Reservas - Frontend
 
-El presente proyecto es una página de reservas de espacios, dicha pagina fue hecha con Vite + React, junto a TypeScript y JavaScript.
+Sistema web moderno para la gestión de reservas de espacios y materiales en instituciones educativas. Desarrollado con React y Vite, implementando patrones de diseño de software.
 
-# Motivacion detras de este proyecto-
+## Descripción del Proyecto
 
-El propósito bajo el cual se creó este proyecto fue con el fin de aprender a programar tanto frontend como backend en el framework React, por lo que este proyecto está orientado a ser ejecutado de forma local y no sobre el internet. Aunque con algunos cambios y el despliegue del backend se podría desplegar esta página en la web, este no era el objetivo final del proyecto, por lo que no se realizó.
+El Sistema de Gestión de Reservas es una aplicación web completa que permite a estudiantes, profesores, externos y laboristas gestionar de manera eficiente la reserva de espacios (aulas, laboratorios, auditorios) y materiales educativos.
 
-## Cómo ejecutar este proyecto
+### Características Principales
 
-Sigue estos pasos para ejecutar la aplicación localmente:
+- **Gestión de Reservas de Espacios**: Reserva de aulas, laboratorios de física y computación, y auditorios en tiempo real
+- **Gestión de Materiales**: Solicitud y administración de préstamos de equipos y materiales
+- **Múltiples Roles de Usuario**:
+  - **Estudiantes**: Reserva de espacios para estudio y prácticas
+  - **Profesores**: Programación de clases y solicitud de materiales
+  - **Externos**: Acceso a espacios para eventos y capacitaciones
+  - **Laboristas**: Administración completa de reservas e inventarios
+- **Calendario Inteligente**: Visualización de disponibilidad semanal con filtros por tipo de espacio
+- **Sistema de Calificaciones**: Evaluación de experiencias y comentarios
+- **Gestión de Perfil**: Información de usuario y historial de reservas
+- **Recursos Externos**: Acceso a enlaces y recursos adicionales
+- **Tema Claro/Oscuro**: Interfaz adaptable según preferencias del usuario
 
-1. Tener PostgreSQL y Node.js instalados en la máquina.
-2. Crear una base de datos en PostgreSQL.
-3. Copiar `backend/.env.example` y renombrarlo a `backend/.dev.env`, luego configurar los datos de conexión a la base de datos dentro de ese archivo.
+## Ejecucion
 
-4. Abrir una terminal y ejecutar:
+### Prerrequisitos
+
+- **Node.js** (versión 16 o superior)
+- **npm**
+
+### Instalación
+
+1. Clona el repositorio:
 
 ```bash
-cd backend && npm i
+git clone https://github.com/pulidxxx/Sistema-de-gestion-de-reserva-frontend.git
+cd Sistema-de-gestion-de-reserva-frontend
 ```
 
-5. Iniciar el backend:
+2. Instala las dependencias:
 
 ```bash
-npm run start
+npm install
 ```
 
-6. Ejecutar los seeders para poblar datos iniciales (desde la carpeta `backend`):
+### Configuración
 
-```bash
-npm run seed:espacios && npm run seed:material
+Crea un archivo `.env` en la raíz del proyecto con la siguiente configuración:
+
+```env
+VITE_API_URL=http://localhost:8080/api
 ```
 
-7. En otra terminal, preparar e iniciar el frontend:
+Ajusta la URL según la configuración de tu backend.
+
+### Ejecutar el Proyecto
 
 ```bash
-cd frontend && npm i
 npm run dev
 ```
 
-## Tests
+La aplicación estará disponible en `http://localhost:5173`
 
--   Para ejecutar los tests del backend (desde la carpeta `backend`):
+### Ejecutar Tests
 
 ```bash
+# Ejecutar tests en modo watch
 npm run test
+
+# Ejecutar tests con interfaz gráfica
+npm run test:ui
+
+# Ejecutar tests una vez
+npm run test:run
+
+# Generar reporte de cobertura
+npm run test:coverage
 ```
 
--   Para ejecutar los tests del frontend (desde la carpeta `frontend`):
+## 🛠️ Tecnologías Utilizadas
 
-```bash
-npm run test:ui
+### Frontend Framework
+
+- **React 18.2**: Biblioteca de UI
+- **Vite 4.4**: Build tool y dev server
+
+### UI y Estilos
+
+- **React Bootstrap 2.9**: Componentes UI
+- **Bootstrap 5.3**: Framework CSS
+- **FontAwesome**: Iconografía
+
+### Enrutamiento y Estado
+
+- **React Router DOM 6.16**: Navegación SPA
+- **React Select 5.10**: Selectores avanzados
+
+### Utilidades
+
+- **Axios 1.9**: Cliente HTTP
+- **date-fns 4.1**: Manipulación de fechas
+- **Day.js 1.11**: Librería de fechas ligera
+
+### Testing
+
+- **Vitest 0.34**: Framework de testing
+- **Testing Library**: Testing de componentes React
+- **jsdom**: Simulación de DOM para tests
+
+## Estructura del Proyecto
+
+```
+src/
+├── Classes/              # Implementación de patrones de diseño
+│   ├── Adapter/         # Patrón Adapter
+│   ├── Builder/         # Patrón Builder
+│   ├── Estados/         # Patrón State
+│   ├── Header/          # Header con Strategy
+│   └── MetodoFabrica/   # Patrón Factory Method
+├── Components/          # Componentes reutilizables
+├── Pages/              # Páginas de la aplicación
+├── Styles/             # Archivos CSS
+├── Utils/              # Utilidades y contextos
+├── hooks/              # Custom React hooks
+└── types/              # Definiciones TypeScript
 ```
