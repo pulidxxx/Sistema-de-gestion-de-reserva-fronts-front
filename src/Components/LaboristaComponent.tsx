@@ -1,9 +1,10 @@
 import { useState, useEffect } from 'react';
 import '../Styles/ClienteProfile.css';
-import { Navigate, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
-// Componentes de iconos SVG simples
+
+// Iconos SVG
 const UserIcon = () => (
   <svg className="icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
     <path
@@ -32,14 +33,14 @@ const ArrowRightIcon = () => (
   </svg>
 );
 
-// Componente Button personalizado
+// Botón personalizado
 const Button = ({ children, onClick, className = '' }) => (
   <button onClick={onClick} className={`btn ${className}`}>
     {children}
   </button>
 );
 
-// Componentes Card personalizados
+// Card personalizados
 const Card = ({ children, className = '' }) => (
   <div className={`card ${className}`}>{children}</div>
 );
@@ -52,11 +53,12 @@ const CardContent = ({ children, className = '' }) => (
   <div className={`card-content ${className}`}>{children}</div>
 );
 
-export default function UserProfile() {
+export default function LaboristaProfile() {
   const navigate = useNavigate();
   const [currentDate, setCurrentDate] = useState('');
   const email = localStorage.getItem('email');
   const [usuario, setUsuario] = useState<any>(null);
+
   useEffect(() => {
     if (email) {
       obtenerUsuario(email);
@@ -71,13 +73,6 @@ export default function UserProfile() {
     };
     setCurrentDate(today.toLocaleDateString('es-ES', options));
   }, []);
-
-  const handleReservationClick = () => {
-    console.log('Navegando al sistema de reservas...');
-    alert('Redirigiendo al sistema de reservas...');
-  };
-
-  //Datos del usuario
 
   const obtenerUsuario = async (email) => {
     try {
@@ -94,8 +89,8 @@ export default function UserProfile() {
     <div className="profile-container">
       <div className="profile-wrapper">
         <div className="profile-grid">
-          {/* Panel lateral con foto y estado */}
-          <aside style={{ background: '#212529' }} className="profile-sidebar">
+          {/* Panel lateral con foto, estado y datos */}
+          <aside className="profile-sidebar">
             <div className="profile-info">
               <div className="profile-avatar-large">
                 <UserIcon />
@@ -104,43 +99,73 @@ export default function UserProfile() {
               <p className="profile-role">{usuario ? usuario.tipo : ''}</p>
               <div className="status-pill active">🟢 Activo</div>
             </div>
+
+            <div className="profile-divider-line"></div>
+
+            <div className="profile-stats">
+              <div className="stat-item">
+                <div className="stat-icon user-icon">
+                  <UserIcon />
+                </div>
+                <div className="stat-content">
+                  <p className="stat-label">Email</p>
+                  <p className="stat-value">{usuario ? usuario.email : 'N/A'}</p>
+                </div>
+              </div>
+            </div>
           </aside>
 
           {/* Contenido principal */}
           <main className="profile-main">
             {/* Tarjeta de bienvenida */}
             <Card className="welcome-card">
-              <CardHeader>
-                <h2 style={{ color: '#fff' }}>
-                  Bienvenido, {usuario ? usuario.nombre : 'Cargando...'}{' '}
-                </h2>
-                <p style={{ color: '#fff' }}>Nos alegra verte de nuevo</p>
+              <CardHeader className="welcome-header">
+                <div className="welcome-info">
+                  <div className="welcome-avatar">
+                    <UserIcon />
+                  </div>
+                  <div>
+                    <h2 className="welcome-title">
+                      Bienvenido, {usuario ? usuario.nombre : 'Cargando...'}{' '}
+                    </h2>
+                    <p className="welcome-subtitle">Nos alegra verte de nuevo</p>
+                  </div>
+                </div>
               </CardHeader>
-              <CardContent>
-                <p style={{ color: '#fff' }}>
-                  Desde aquí puedes gestionar y modificar las reservas
+              <CardContent className="welcome-content">
+                <p className="welcome-description">
+                  Desde aquí puedes gestionar y modificar las reservas y materiales.
                 </p>
-                <Button
-                  onClick={() => navigate('/laborista/gestionMateriales')}
-                  className="reservation-btn"
-                >
-                  <span>Gestiona las reservas</span>
-                  <ArrowRightIcon />
-                </Button>
+                <div style={{ display: "flex", gap: "1rem", flexWrap: "wrap" }}>
+                  <Button
+                    onClick={() => navigate('/laborista/gestionReservas')}
+                    className="reservation-btn"
+                  >
+                    <span>Gestiona las reservas</span>
+                    <ArrowRightIcon />
+                  </Button>
+                  <Button
+                    onClick={() => navigate('/laborista/gestionMateriales')}
+                    className="reservation-btn"
+                  >
+                    <span>Gestiona los materiales</span>
+                    <ArrowRightIcon />
+                  </Button>
+                </div>
               </CardContent>
             </Card>
 
             {/* Sección de información */}
             <div className="info-grid">
               <Card className="info-card">
-                <CardContent>
+                <CardContent className="info-content">
                   <div className="info-item">
                     <div className="info-icon date-icon">
                       <CalendarIcon />
                     </div>
                     <div>
-                      <h3 style={{ color: '#fff' }}>Fecha Actual</h3>
-                      <p style={{ color: '#fff' }}>{currentDate}</p>
+                      <h3 className="info-title">Fecha Actual</h3>
+                      <p className="info-value">{currentDate}</p>
                     </div>
                   </div>
                 </CardContent>

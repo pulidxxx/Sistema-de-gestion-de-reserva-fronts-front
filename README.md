@@ -48,7 +48,7 @@ npm install
 Crea un archivo `.env` en la raíz del proyecto con la siguiente configuración:
 
 ```env
-VITE_API_URL=http://localhost:8080/api
+VITE_API_BASE_URL="https://www.reservaspro.xyz"
 ```
 
 Ajusta la URL según la configuración de tu backend.

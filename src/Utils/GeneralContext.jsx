@@ -11,11 +11,16 @@ export const GeneralProvider = ({ children }) => {
   const [selectedImage, setSelectedImage] = useState(null);
   const [authChecked, setAuthChecked] = useState(false); 
   const [userEmail, setUserEmail] = useState(null);
+  const [userType, setUserType] = useState(null);
 
   useEffect(() => {
     const email = localStorage.getItem("email");
+    const type = localStorage.getItem("tipoUsuario");
     if (email) {
       setUserEmail(email);
+    }
+    if (type) {
+      setUserType(type);
     }
     setAuthChecked(true); 
   }, []);
@@ -64,6 +69,7 @@ export const GeneralProvider = ({ children }) => {
         setEstampadoElegido,
         selectedImage,
         userEmail,
+        userType,
         login,
         logout,
         authChecked
