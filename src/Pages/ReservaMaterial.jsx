@@ -81,7 +81,6 @@ function ReservaMaterial() {
 
         <Col className="px-5" md={{ span: 6, offset: 3 }}>
           <div className="layout-container" >
-            <h3 className="text-center mb-4">Selecciona un material</h3>
             <Select
               options={materiales.map((mat) => ({
                 value: mat.id,
@@ -95,75 +94,89 @@ function ReservaMaterial() {
               className="select"
               classNamePrefix="selectMenu"
             />
-            {materialSeleccionado && (
-              <div className="mt-4 text-center">
-                {(() => {
-                  const material = materiales.find(
-                    (m) => m.id === parseInt(materialSeleccionado)
-                  );
-                  const hoy = new Date().toISOString().split("T")[0];
-                  const fechaMax = new Date(hoy);
-                  fechaMax.setDate(fechaMax.getDate() + 7);
-                  const fechaMaxStr = fechaMax.toISOString().split("T")[0];
-                  return material ? (
-                    material.cantidadDisponible < 1 ? (
-                      <p>
-                        No hay unidades disponibles, consulte en otro momento.
-                      </p>
+              {materialSeleccionado && (
+                <div className="material-card-horizontal fadeIn">
+                  {(() => {
+                    const material = materiales.find(
+                      (m) => m.id === parseInt(materialSeleccionado)
+                    );
+                    const hoy = new Date().toISOString().split("T")[0];
+                    const fechaMax = new Date(hoy);
+                    fechaMax.setDate(fechaMax.getDate() + 7);
+                    const fechaMaxStr = fechaMax.toISOString().split("T")[0];
+
+                    return material ? (
+                      material.cantidadDisponible < 1 ? (
+                        <p className="no-stock">No hay unidades disponibles, consulta más tarde.</p>
+                      ) : (
+                        <>
+                          <div className="material-content">
+                            {/* COLUMNA IZQUIERDA */}
+                            <div className="material-left">
+                              <h4 className="material-title">
+                                {material.nombre}
+                              </h4>
+                              <p className="material-availability">
+                                {material.cantidadDisponible} unidades disponibles
+                              </p>
+                            </div>
+
+                            {/* COLUMNA DERECHA */}
+                            <div className="material-right">
+                              <div className="input-top">
+                                <label htmlFor="cantidad">
+                                  Cantidad
+                                </label>
+                                <input
+                                  className="number"
+                                  type="number"
+                                  min={1}
+                                  max={material.cantidadDisponible}
+                                  value={cantidadSeleccionada || ""}
+                                  onChange={(e) => {
+                                    let value = parseInt(e.target.value, 10);
+                                    if (isNaN(value)) value = "";
+                                    if (value < 1) value = 1;
+                                    if (value > material.cantidadDisponible)
+                                      value = material.cantidadDisponible;
+                                    setCantidad(value);
+                                  }}
+                                />
+                              </div>
+                              <div className="input-bottom">
+                                <label htmlFor="fecha">
+                                  Fecha
+                                </label>
+                                <input
+                                  className="dateMaterial"
+                                  type="date"
+                                  value={fecha}
+                                  min={hoy}
+                                  max={fechaMaxStr}
+                                  onChange={(e) => setFecha(e.target.value)}
+                                  onKeyDown={(e) => e.preventDefault()}
+                                />
+                              </div>
+                            </div>
+                          </div>
+
+                          {/* BOTÓN */}
+                          <div className="confirmSection">
+                            <button
+                              className="btn-reserva"
+                              onClick={handleConfirmarReservaMaterial}
+                            >
+                              Confirmar Préstamo
+                            </button>
+                          </div>
+                        </>
+                      )
                     ) : (
-                      <>
-                        <p>
-                          Material seleccionado:{" "}
-                          <strong>{material.nombre}</strong> (
-                          {material.cantidadDisponible} unidades disponibles)
-                        </p>
-                        Selecciona la cantidad que desas reservar:{" "}
-                        <input
-                          className="number"
-                          type="number"
-                          name="cantidad"
-                          min={1}
-                          max={material.cantidadDisponible}
-                          step={1}
-                          value={cantidadSeleccionada}
-                          onChange={(e) => {
-                            let value = parseInt(e.target.value, 10);
-                            if (isNaN(value)) value = "";
-                            else {
-                              if (value < 1) value = 1;
-                              if (value > material.cantidadDisponible)
-                                value = material.cantidadDisponible;
-                            }
-                            setCantidad(value);
-                          }}
-                        />
-                        <p>
-                          Fecha:{" "}
-                          <input
-                            className="dateMaterial"
-                            type="date"
-                            value={fecha}
-                            min={hoy}
-                            max={fechaMaxStr}
-                            onChange={(e) => setFecha(e.target.value)}
-                            onKeyDown={(e) => e.preventDefault()}
-                          />
-                        </p>
-                        <hr />
-                        <button
-                          className="btn btn-primary"
-                          onClick={handleConfirmarReservaMaterial}
-                        >
-                          Confirmar Préstamo
-                        </button>
-                      </>
-                    )
-                  ) : (
-                    <p>Material no encontrado.</p>
-                  );
-                })()}
-              </div>
-            )}
+                      <p>Material no encontrado.</p>
+                    );
+                  })()}
+                </div>
+              )}
           </div >
         </Col>
 
